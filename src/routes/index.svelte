@@ -1,8 +1,10 @@
 <script lang='ts'>
-  import { openDirDialog } from '$lib/tauri';
+  import { createConfigDir, openDirDialog } from '$lib/tauri';
   import { locations } from '../stores/locations';
 
   let newLocation = '/Users/james/sorted/test/';
+
+  createConfigDir();
 
   interface Location {
     root: string;
