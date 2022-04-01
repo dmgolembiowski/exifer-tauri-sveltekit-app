@@ -50,7 +50,11 @@
       "active": false
     },
     "allowlist": {
-      "all": true
+      "dialog": {
+        "all": true,
+        "open": true,
+        "save": true
+      }
     },
     "windows": [
       {

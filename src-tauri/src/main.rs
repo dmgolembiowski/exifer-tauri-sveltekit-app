@@ -3,29 +3,24 @@ all(not(debug_assertions), target_os = "windows"),
 windows_subsystem = "windows"
 )]
 
-use serde::Serialize;
-use std::path::PathBuf;
 use tauri::command;
+
+use crate::error::ApplicationError;
+use crate::location::Location;
+
+mod location;
+mod error;
+mod file_details;
+mod extension;
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![add_image_root])
+        .invoke_handler(tauri::generate_handler![add_location])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
 
-#[derive(Serialize)]
-struct Location {
-    root: PathBuf,
-    other: String,
-    count: usize,
-}
-
 #[command]
-fn add_image_root(root: String) -> Location {
-    Location {
-        root: PathBuf::from(root),
-        other: "other".to_string(),
-        count: 0,
-    }
+fn add_location(root: String) -> Result<Location, ApplicationError> {
+    location::add_location(root)
 }
