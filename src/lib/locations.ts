@@ -23,9 +23,14 @@ export async function saveLocationsToFile(location: Location): Promise<Location[
   const file = await locationsFile;
   let locations = await loadLocationsFromFile();
 
-  if (locations.map(loc => loc.root).includes(location.root)) {
-    return locations;
-  }
+  if (locations.filter(loc => {
+    if (loc.root === location.root && loc.parsed === location.parsed) {
+      return locations;
+    } else if (loc.root === location.root) {
+      locations = locations.filter(loc => loc.root !== location.root);
+    }
+  }))
+
   locations.push(location);
 
   return writeFile({

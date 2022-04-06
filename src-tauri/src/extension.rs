@@ -1,6 +1,7 @@
 use std::ffi::OsStr;
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Copy)]
 pub enum Extension {
     JPG,
     MP4,
