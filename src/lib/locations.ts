@@ -10,7 +10,7 @@ export async function loadLocationsFromFile(): Promise<Location[]> {
   return readTextFile(file)
     .then(JSON.parse)
     .catch((err) => {
-      console.log("No locations file found. Creating one now. " + err);
+      console.log('No locations file found. Creating one now. ' + err);
       return writeFile({
         path: file,
         contents: JSON.stringify([]),
@@ -22,6 +22,10 @@ export async function loadLocationsFromFile(): Promise<Location[]> {
 export async function saveLocationsToFile(location: Location): Promise<Location[]> {
   const file = await locationsFile;
   let locations = await loadLocationsFromFile();
+
+  if (locations.map(loc => loc.root).includes(location.root)) {
+    return locations;
+  }
   locations.push(location);
 
   return writeFile({

@@ -2,25 +2,24 @@ use std::io;
 use std::path::{Path, PathBuf};
 
 use serde::Serialize;
-use walkdir::{WalkDir};
+use walkdir::WalkDir;
 
 use crate::error::ApplicationError;
 
 #[derive(Serialize)]
 pub struct Location {
     root: PathBuf,
-    paths: Vec<PathBuf>,
 }
 
 pub fn add_location(root: String) -> Result<Location, ApplicationError> {
     let root = Path::new(&root).to_path_buf();
-    match read_dir(&root) {
-        Ok(paths) => Ok(Location {
-            root,
-            paths,
-        }),
-        Err(e) => Err(ApplicationError::IOError(root, e.to_string())),
+    println!("Adding directory {}", &root.display());
+
+    if !root.is_dir() {
+        return Err(ApplicationError::IOError(root, "Path is not a directory".to_string()));
     }
+
+    Ok(Location { root })
 }
 
 fn read_dir(root: &PathBuf) -> Result<Vec<PathBuf>, io::Error> {

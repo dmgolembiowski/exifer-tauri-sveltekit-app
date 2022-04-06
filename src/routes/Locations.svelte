@@ -12,7 +12,7 @@
   async function saveLocation() {
     let location = await openDirDialog()
       .then(res => {
-        return { root: res.root, paths: res.paths };
+        return { root: res.root};
       });
 
     let updatedLocations = await saveLocationsToFile(location);
@@ -33,7 +33,6 @@
 <button on:click={saveLocation}>Add location</button>
 {#each $locations as loc}
   <h1>{loc.root}</h1>
-  <h2>{loc.paths.length}</h2>
 {/each}
 
 <button on:click={() => clearLocations()}>Clear</button>
