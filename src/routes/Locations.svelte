@@ -1,8 +1,8 @@
 <script>
   import { locations } from '../stores/locations';
-  import { clearSavedLocations, loadLocationsFromFile, saveLocationsToFile } from '$lib/locations.ts';
   import { openDirDialog } from '$lib/tauri.ts';
   import { onMount } from 'svelte';
+  import { clearSavedLocations, loadLocationsFromFile, saveLocationsToFile } from '../lib/locations.ts';
 
   onMount(async () => {
     let savedLocations = await loadLocationsFromFile();
