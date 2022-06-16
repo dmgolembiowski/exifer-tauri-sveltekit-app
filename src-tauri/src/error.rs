@@ -10,3 +10,4 @@ pub enum ApplicationError {
     NoFileName(PathBuf, String),
     IOError(PathBuf, String),
 }
+

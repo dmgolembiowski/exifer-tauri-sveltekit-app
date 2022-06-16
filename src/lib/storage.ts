@@ -1,9 +1,8 @@
-import type { Location } from '../stores/locations';
-
 import { configDir } from '@tauri-apps/api/path';
 import { readTextFile, removeFile, writeFile } from '@tauri-apps/api/fs';
+import type { Location } from '../types/Location';
 
-const locationsFile = configDir().then(dir => dir.concat('exifer-app/locations.json'));
+const locationsFile = configDir().then(dir => dir.concat('exifer-tauri-sveltekit-app/locations.json'));
 
 export async function loadLocationsFromFile(): Promise<Location[]> {
   const file = await locationsFile;
@@ -31,7 +30,7 @@ export async function saveLocationsToFile(location: Location): Promise<Location[
     }
   }))
 
-  locations.push(location);
+    locations.push(location);
 
   return writeFile({
     path: file,

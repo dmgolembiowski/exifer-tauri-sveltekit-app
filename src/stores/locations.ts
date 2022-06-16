@@ -1,13 +1,4 @@
 import { writable } from 'svelte/store';
+import type { Location } from '../types/Location';
 
-export interface Location {
-  root: string;
-  parsed: boolean;
-  totalFileCount: number,
-  parsableFileCount: number,
-  largestImageSize: number,
-  extensionMap: Map<string, number>,
-  errors: string[],
-}
-
-export const locations = writable([]);
+export const locations = writable<Location[]>([]);

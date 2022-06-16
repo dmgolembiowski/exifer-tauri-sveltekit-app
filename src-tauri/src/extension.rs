@@ -1,5 +1,7 @@
 use std::ffi::OsStr;
-use serde::{Deserialize, Serialize};
+
+use serde::Serialize;
+
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Copy)]
 pub enum Extension {

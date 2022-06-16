@@ -1,17 +1,25 @@
 import { invoke } from '@tauri-apps/api/tauri';
-import { open } from '@tauri-apps/api/dialog';
-import type { Location } from '../stores/locations';
+import type { Location } from '../types/Location';
 
 export async function openDirDialog() {
-  return open({
-    directory: true,
-    multiple: true,
-    title: 'Select directories',
-    defaultPath: '/Users/james/sorted/',
-  })
-    .then((dir) => invoke('add_location', { root: dir }));
+  let result = await invoke('open_dialog');
+  if (result === null) {
+    return;
+  }
+
+  let location: Location = {
+    root: result as string,
+    parsed: false,
+  };
+
+  return location;
 }
 
-export async function analyseLocation(location: Location) {
-  return invoke('analyse_location', { location });
+export async function analyseLocation(root: string) {
+  let result = await invoke('analyse_location', { root });
+  if (result === null) {
+    return;
+  }
+
+  console.log(result);
 }
