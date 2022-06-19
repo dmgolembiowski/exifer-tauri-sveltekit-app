@@ -1,4 +1,5 @@
 {
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "package": {
     "productName": "exifer-app",
     "version": "0.1.0"
@@ -7,8 +8,8 @@
     "withGlobalTauri": true,
     "distDir": "../build",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "pnpm run dev",
-    "beforeBuildCommand": "pnpm run build"
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build"
   },
   "tauri": {
     "bundle": {

@@ -3,7 +3,6 @@ use std::ffi::OsString;
 use std::fs;
 use std::fs::File;
 use std::io::{BufReader, Read};
-use std::iter::Map;
 use std::path::{Path, PathBuf};
 
 use imagesize::ImageType;

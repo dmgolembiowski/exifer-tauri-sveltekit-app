@@ -12,6 +12,8 @@ export async function openDirDialog() {
     parsed: false,
   };
 
+  console.log('openDirDialog', location);
+
   return location;
 }
 

@@ -10,12 +10,12 @@ edition = "2021"
 rust-version = "1.57"
 
 [build-dependencies]
-tauri-build = { version = "1.0.0-rc.5", features = [] }
+tauri-build = { version = "1.0.0", features = [] }
 
 [dependencies]
-serde_json = "1.0.79"
-serde = { version = "1.0.136", features = ["derive"] }
-tauri = { version = "1.0.0-rc.6", features = ["dialog-all", "fs-copy-file", "fs-create-dir", "fs-read-dir", "fs-read-file", "fs-remove-dir", "fs-remove-file", "fs-rename-file", "fs-write-file", "path-all"] }
+serde_json = "1.0.81"
+serde = { version = "1.0.137", features = ["derive"] }
+tauri = { version = "1.0.0", features = ["dialog-all", "fs-copy-file", "fs-create-dir", "fs-read-dir", "fs-read-file", "fs-remove-dir", "fs-remove-file", "fs-rename-file", "fs-write-file", "path-all"] }
 walkdir = "2.3.2"
 imagesize = "0.9.0"
 
